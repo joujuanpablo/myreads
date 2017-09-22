@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
+import BookShelf from './BookShelf';
+import OpenSearch from './OpenSearch'
 
 class ListBooks extends Component {
     state = {
@@ -8,8 +10,15 @@ class ListBooks extends Component {
 
     render() {
         return (
-            // TODO: build up the subcomponents from the markup in float.js
-            <h1>List Books Component</h1>
+        <div className="list-books">
+            <div className="list-books-title">
+              <h1>MyReads</h1>
+            </div>
+            <div className="list-books-content">
+                <BookShelf/>
+                <OpenSearch/>
+          </div>
+        </div>
         )
     }
 }  
