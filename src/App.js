@@ -20,9 +20,12 @@ class BooksApp extends Component {
     render() {
     return (
       <div className="app">
-          {/* Use Route component to create different screens for each of these components */}
-          <ListBooks/>
-          <SearchBooks/>        
+          <Route exact path='/' render={() => (
+            <ListBooks/>
+          )}/>
+          <Route exact path='/search' render={() => (
+            <SearchBooks/>
+          )}/>     
       </div>
         )
     }
