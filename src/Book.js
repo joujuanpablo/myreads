@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+//TODO: Proptypes and sortBy
 
 class Book extends Component {
     state = {
