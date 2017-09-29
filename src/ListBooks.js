@@ -5,7 +5,6 @@ import OpenSearch from './OpenSearch'
 
 class ListBooks extends Component {
     state = {
-
     }
 
     render() {
@@ -15,7 +14,7 @@ class ListBooks extends Component {
               <h1>MyReads</h1>
             </div>
             <div className="list-books-content">
-                <BookShelf/>
+                <BookShelf books={this.props.books}/>
                 <OpenSearch/>
           </div>
         </div>
