@@ -8,8 +8,8 @@ class BookGrid extends Component {
     }
 
     handleShelfChange = (shelf, book) => {
-        alert(shelf);
-        console.dir(book);
+        alert(`${book.title} should go to ${shelf}`);
+        
         this.setState({ bookShelf: shelf });
         BooksAPI.update(book, this.state.bookShelf);
         
@@ -24,7 +24,7 @@ class BookGrid extends Component {
                             <div className="book-top">
                                 <div className="book-cover" style={{ width: 128, height: 188, backgroundImage:`url(${book.imageLinks.thumbnail})`}}></div>
                                 <div className="book-shelf-changer">
-                                <select value={this.state.bookShelf} onChange={(event) => this.handleShelfChange(event.target.value)}>
+                                <select value={this.state.bookShelf} onChange={(event) => this.handleShelfChange(event.target.value, book)}>
                                     <option value="none" disabled>Move to...</option>
                                     <option value="currentlyReading">Currently Reading</option>
                                     <option value="wantToRead">Want to Read</option>
