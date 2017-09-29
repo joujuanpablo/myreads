@@ -1,17 +1,22 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
-import { Link } from 'react-router-dom'; 
+import { Link } from 'react-router-dom';
+import escapeRegExp from 'escape-string-regexp';
+import sortBy from 'sort-by'; 
 import BookGrid from './BookGrid';
+
 
 class SearchBooks extends Component {
     state = {
         query: ''
     }
     updateQuery = (query) => {
-        this.setState({query: query.trim()})
+        this.setState({query: query})
     }
     render(){
         const { query } = this.state;
+
+        //TODO: apply sorting of books using sort-by
         return(
             <div className="search-books">
             <div className="search-books-bar">

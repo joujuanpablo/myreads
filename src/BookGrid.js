@@ -1,14 +1,20 @@
 import React, { Component } from 'react';
+import * as BooksAPI from './BooksAPI';
 //TODO: Proptypes and sortBy
 
 class BookGrid extends Component {
     state = {
-
+        bookShelf: '',
     }
 
-    changeShelf(e) {
-        alert("changed");
+    handleShelfChange = (shelf, book) => {
+        alert(shelf);
+        console.dir(book);
+        this.setState({ bookShelf: shelf });
+        BooksAPI.update(book, this.state.bookShelf);
+        
     }
+
     render() {
         return (
             <ol className="books-grid">
@@ -16,9 +22,9 @@ class BookGrid extends Component {
                     <li key={book.id}>
                         <div className="book">
                             <div className="book-top">
-                                <div className="book-cover" style={{ width: 128, height: 188, backgroundImage: book.coverImage }}></div>
+                                <div className="book-cover" style={{ width: 128, height: 188, backgroundImage:`url(${book.imageLinks.thumbnail})`}}></div>
                                 <div className="book-shelf-changer">
-                                <select onChange={this.changeShelf}>
+                                <select value={this.state.bookShelf} onChange={(event) => this.handleShelfChange(event.target.value)}>
                                     <option value="none" disabled>Move to...</option>
                                     <option value="currentlyReading">Currently Reading</option>
                                     <option value="wantToRead">Want to Read</option>
@@ -28,7 +34,8 @@ class BookGrid extends Component {
                                 </div>
                             </div>
                             <div className="book-title">{book.title}</div>
-                            <div className="book-authors">{book.author}</div>
+                            <div className="book-authors">{book.authors}</div>
+                            <p>{book.shelf}</p>
                         </div>
                     </li>
                 ))}
