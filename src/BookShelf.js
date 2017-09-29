@@ -27,10 +27,10 @@ class BookShelf extends Component {
         return (
           <div>
             {this.shelves.map((shelf) => (
-              <div className="bookshelf" key={shelf.id}>
+              <div className="bookshelf" key={shelf.id} id={shelf.id}>
                 <h2 className="bookshelf-title">{shelf.name}</h2>
                 <div className="bookshelf-books">
-                  <BookGrid books={this.props.books}></BookGrid>
+                  <BookGrid books={this.props.books} shelf={shelf.id}></BookGrid>
                 </div>
               </div>
             ))}
