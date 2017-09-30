@@ -6,18 +6,17 @@ class SelectBook extends Component {
         bookShelf: '',
     }
 
-    handleShelfChange = (shelf, book) => {
-        alert(`${book.title} should go to ${shelf}`);
-        
-        this.setState({ bookShelf: shelf });
-        BooksAPI.update(book, this.state.bookShelf);
+    handleShelfChange = (e) => {
+        const { value: shelf} = e.target
+        this.setState({bookShelf: shelf});
+        this.props.onChangeShelf(shelf, this.props.book);
         
     }
 
     render() {
         return(
             <div className="book-shelf-changer">
-                <select value={this.state.bookShelf} onChange={(event) => this.handleShelfChange(event.target.value, this.props.book)}>
+                <select value={this.props.book.shelf} onChange={this.handleShelfChange}>
                     <option value="none" disabled>Move to...</option>
                     <option value="currentlyReading">Currently Reading</option>
                     <option value="wantToRead">Want to Read</option>

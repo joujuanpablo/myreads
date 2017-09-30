@@ -13,7 +13,7 @@ class ListBooks extends Component {
               <h1>MyReads</h1>
             </div>
             <div className="list-books-content">
-                <BookShelf books={this.props.books}/>
+                <BookShelf books={this.props.books} onChangeShelf={this.props.onChangeShelf}/>
                 <OpenSearch/>
           </div>
         </div>

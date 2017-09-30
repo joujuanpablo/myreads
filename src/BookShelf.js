@@ -30,7 +30,7 @@ class BookShelf extends Component {
               <div className="bookshelf" key={shelf.id} id={shelf.id}>
                 <h2 className="bookshelf-title">{shelf.name}</h2>
                 <div className="bookshelf-books">
-                  <BookGrid books={this.props.books} shelf={shelf.id}></BookGrid>
+                  <BookGrid books={this.props.books} onChangeShelf={this.props.onChangeShelf} shelf={shelf.id}></BookGrid>
                 </div>
               </div>
             ))}

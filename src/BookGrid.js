@@ -14,7 +14,7 @@ class BookGrid extends Component {
                         <div className="book">
                             <div className="book-top">
                                 <div className="book-cover" style={{ width: 128, height: 188, backgroundImage:`url(${book.imageLinks.thumbnail})`}}></div>
-                                <SelectBook book={book}/>
+                                <SelectBook book={book} onChangeShelf={this.props.onChangeShelf}/>
                             </div>
                             <div className="book-title">{book.title}</div>
                             <div className="book-authors">{book.authors}</div>

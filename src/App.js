@@ -16,19 +16,35 @@ class BooksApp extends Component {
             this.setState({ books });
         })
     }
+    changeShelf = (newShelf, book) => {
+        console.log(`${book.title} should go to ${newShelf}`)
+        // this.setState((state) => ({
+        //     books: state.books.map((c) => {
+        //         if (c.id === book.id) {
+        //             c.shelf = newShelf;
+        //         }
+        //     })
+        // }))
+        // console.log(this.state.books);
+        BooksAPI.update(book, newShelf);
+        BooksAPI.getAll().then((books) => {
+            this.setState({ books });
+        })
+    }
 
     render() {
-    return (
-      <div className="app">
-          <Route exact path='/' render={() => (
-            <ListBooks books={this.state.books}/>
-          )}/>
-          <Route exact path='/search' render={() => (
-            <SearchBooks books={this.state.books}/>
-          )}/>     
-      </div>
+        console.log(this.state.books);
+        return (
+            <div className="app">
+                <Route exact path='/' render={() => (
+                    <ListBooks onChangeShelf={this.changeShelf} books={this.state.books} />
+                )} />
+                <Route exact path='/search' render={() => (
+                    <SearchBooks onChangeShelf={this.changeShelf} books={this.state.books} />
+                )} />
+            </div>
         )
     }
 }
 
-export default BooksApp
+export default BooksApp;
