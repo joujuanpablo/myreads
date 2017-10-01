@@ -3,12 +3,10 @@ import SelectBook from './SelectBook'
 //TODO: Proptypes and sortBy
 
 class BookGrid extends Component {
-    state = {
-    }
 
     render() {
         return (
-            <ol className="books-grid">
+            <ol style={this.props.show} className="books-grid">
                 {this.props.books.map((book) => (
                     <li key={book.id}>
                         <div className="book">

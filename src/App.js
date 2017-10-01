@@ -18,22 +18,13 @@ class BooksApp extends Component {
     }
     changeShelf = (newShelf, book) => {
         console.log(`${book.title} should go to ${newShelf}`)
-        // this.setState((state) => ({
-        //     books: state.books.map((c) => {
-        //         if (c.id === book.id) {
-        //             c.shelf = newShelf;
-        //         }
-        //     })
-        // }))
-        // console.log(this.state.books);
-        BooksAPI.update(book, newShelf);
+        BooksAPI.update(book, newShelf)
         BooksAPI.getAll().then((books) => {
             this.setState({ books });
         })
     }
 
     render() {
-        console.log(this.state.books);
         return (
             <div className="app">
                 <Route exact path='/' render={() => (
