@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom';
 import escapeRegExp from 'escape-string-regexp';
 import sortBy from 'sort-by';
 import BookGrid from './BookGrid';
-import * as BooksAPI from './BooksAPI'
+import * as BooksAPI from './BooksAPI';
+import propTypes from 'prop-types';
 
 
 class SearchBooks extends Component {
@@ -12,6 +13,12 @@ class SearchBooks extends Component {
         booksResults: [],
         errorMessageDisplay: 'none',
     }
+
+    static propTypes = {
+        books: propTypes.array.isRequired,
+        onChangeShelf: propTypes.func.isRequired,
+    }
+
     updateQuery(query) {
         this.setState({ query: query.trim() })
         if (query) {
