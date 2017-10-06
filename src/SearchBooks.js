@@ -16,6 +16,15 @@ class SearchBooks extends Component {
         this.setState({ query: query.trim() })
         if (query) {
             BooksAPI.search(query, 20).then(results => {
+                results = results.map(book => {
+                    book.shelf = "none";
+                    this.props.books.map(v => {
+                        if (book.id === v.id) {
+                            book.shelf = v.shelf
+                        }
+                    })
+                    return book;  
+                })
                 this.setState(state => ({
                     booksResults: results,
                     errorMessageDisplay: 'none',
@@ -31,10 +40,7 @@ class SearchBooks extends Component {
             })
 
         }
-
-        console.log(this.state.booksResults)
     }
-
 
     render() {
         const { query } = this.state;
@@ -62,7 +68,6 @@ class SearchBooks extends Component {
                     </div>
                 </div>
                 <div className="search-books-results">
-                    <h1>{this.state.query}</h1>
                     <h1 style={{ display: this.state.errorMessageDisplay }}>No results</h1>
                     <BookGrid books={this.state.booksResults} onChangeShelf={this.props.onChangeShelf} />
                 </div>
